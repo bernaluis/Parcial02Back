@@ -10,7 +10,7 @@ using Parcial02_BM101219_JP100320.Models;
 
 namespace Parcial02_BM101219_JP100320.Controllers
 {
-    [EnableCors("MyPolicy")]
+  
     [Route("api/[controller]")]
     [ApiController]
     public class Elecciones2019Controller : ControllerBase

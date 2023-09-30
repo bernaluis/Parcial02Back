@@ -1,5 +1,6 @@
 using Parcial02_BM101219_JP100320.Models;
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -9,17 +10,12 @@ builder.Services.AddCors(options =>
 
 {
 
-    options.AddPolicy("MyPolicy", builder =>
+    options.AddPolicy(name:MyAllowSpecificOrigins, builder =>
 
     {
 
-        builder.WithOrigins("http://localhost:4200")
+        builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
 
-            .AllowAnyMethod()
-
-            .AllowAnyHeader()
-
-            .AllowCredentials();
 
     });
 
@@ -41,7 +37,7 @@ if (app.Environment.IsDevelopment())
 
 
 
-app.UseCors("MyPolicy"); //programs.cs
+app.UseCors(MyAllowSpecificOrigins); //programs.cs
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
